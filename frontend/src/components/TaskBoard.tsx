@@ -9,12 +9,16 @@ export default function TaskBoard({ projectId }) {
     getTasks(projectId).then((data) => {
       setTasks(data);
     });
-  }, []);
+  }, [
+    projectId
+  ]);
 
   const handleToggle = (task) => {
     const next = task.status === 'DONE' ? 'TODO' : 'DONE';
     task.status = next;
-    setTasks(tasks);
+    setTasks((previousTask) => previousTask.map((t)=> t.id === task.id ? {
+      ...t, status: next
+    } : t));
     updateTaskStatus(task.id, next);
   };
 
@@ -28,6 +32,12 @@ export default function TaskBoard({ projectId }) {
         {tasks.map((task, index) => (
           <TaskItem key={index} task={task} onToggle={handleToggle} />
         ))}
+
+        {
+          !tasks.length && (
+            <p>No tasks for the selected project</p>
+          )
+        }
       </div>
     </div>
   );
