@@ -36,7 +36,7 @@
 - Location:Taskboard.tsx
 - Status:  fixed
 - Evidence:
-- Impact: after the update of the task per project
+- Impact: fail to update the Ui after the update of the task per project
 - Priority:high
 - Proposed solution: add a dependency tracker for the useEffect to automatically retriger the fetching of the data
 - Verification:
@@ -61,7 +61,7 @@
 - Evidence: not information informing the user
 - Impact: could confuse the user, as to the wherether the app is working on not
 - Priority: moderate
-- Proposed solution: add a notification for empty state to help communicate to the user
+- Proposed solution: add a notification for empty state to help communicate to the user that the project has no tasks
 - Verification:
 - Implementation notes: now shows a message that says "No task for the selected project"
 
